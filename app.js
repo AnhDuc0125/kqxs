@@ -25,15 +25,7 @@ var col_7 = document.querySelector("#col-7");
 var col_8 = document.querySelector("#col-8");
 var col_9 = document.querySelector("#col-9");
 var col_0 = document.querySelector("#col-0");
-// var col_1 = document.querySelector("#col-1");
-// var col_2 = document.querySelector("#col-2");
-// var col_3 = document.querySelector("#col-3");
-// var col_4 = document.querySelector("#col-4");
-// var col_5 = document.querySelector("#col-5");
-// var col_6 = document.querySelector("#col-6");
 var col__7 = document.querySelector("#col_7");
-// var col_8 = document.querySelector("#col-8");
-// var col_9 = document.querySelector("#col-9");
 var col_0_copy = document.querySelector("#col-0-copy");
 var col_1_copy = document.querySelector("#col-1-copy");
 var col_2_copy = document.querySelector("#col-2-copy");
@@ -85,22 +77,25 @@ switch (dayInWeek) {
 function showData() {
   let data1dienToan = document.querySelectorAll(".data1-header");
   let data2thanTai = document.querySelectorAll(".data2-header");
-  let dienToanTag = document.querySelector(".input__dienToan").value;
-  let thanTaiTag = document.querySelector(".input__thanTai").value;
-  let motSo = dienToanTag.slice(0, 1);
-  let haiSo = dienToanTag.slice(1, 3);
-  let baSo = dienToanTag.slice(3, dienToanTag.length);
+  let dienToanTag = document.querySelector(".input__dienToan");
+  let thanTaiTag = document.querySelector(".input__thanTai");
+  var dienToanvalue = dienToanTag.value;
+  let motSo = dienToanvalue.slice(0, 1);
+  let haiSo = dienToanvalue.slice(1, 3);
+  let baSo = dienToanvalue.slice(3, dienToanvalue.length);
   for (i = 0; i < data1dienToan.length; i++) {
     data1dienToan[i].innerText = `${motSo} - ${haiSo} - ${baSo}`;
   }
   for (i = 0; i < data2thanTai.length; i++) {
-    data2thanTai[i].innerText = `${thanTaiTag}`;
+    data2thanTai[i].innerText = `${thanTaiTag.value}`;
   }
 
   //không load lại trang khi submit
   var form_thanTai = document.querySelector("#form_thanTai");
   form_thanTai.addEventListener("submit", function (e) {
     e.preventDefault();
+    dienToanTag.value = "";
+    thanTaiTag.value = "";
   });
 }
 
@@ -123,7 +118,6 @@ function customColumn() {
   });
 
   //nút submit không load lại trang
-
   var formElement = document.querySelector("#form_custom");
   formElement.addEventListener("submit", function (e) {
     e.preventDefault();
